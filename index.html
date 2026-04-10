@@ -1,19 +1,137 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Kołowe kasyno</title>
-  <link rel="stylesheet" href="./styles.css" />
+<meta charset="UTF-8" />
+<title>Casino Wheel</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #1b1b1b;
+  color: #fff;
+}
+
+.header {
+  background: #2a2a2a;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background: #0d1b3d;
+  padding: 20px;
+}
+
+.sidebar button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.main {
+  margin-left: 220px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+#wheelContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 40px auto;
+}
+
+#wheel {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 8px solid #333;
+  background: conic-gradient(
+    #0B1D3B 0deg 30deg,
+    #FFD700 30deg 60deg,
+    #FFFFFF 60deg 90deg,
+    #800020 90deg 120deg,
+    #40E0D0 120deg 150deg,
+    #C0C0C0 150deg 180deg,
+    #ff5733 180deg 210deg,
+    #33ff57 210deg 240deg,
+    #3357ff 240deg 270deg,
+    #ff33a8 270deg 300deg,
+    #ffff33 300deg 330deg,
+    #999999 330deg 360deg
+  );
+  transition: transform 5s cubic-bezier(0.33,1,0.68,1);
+}
+
+#indicator {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 20px solid red;
+}
+
+button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover { background: #5d39ff; }
+
+#car {
+  position: absolute;
+  bottom: 20px;
+  left: -150px;
+  width: 150px;
+  transition: 1s;
+}
+</style>
 </head>
 <body>
-  <h1>Poznaj swę szęście</h1>
+
+<div class="sidebar">
+  <button>Find</button>
+  <button>My intents</button>
+  <button>Wallet</button>
+</div>
+
+<div class="main">
+  <h1>Kasyno GTA - Koło Fortuny</h1>
+
   <div id="wheelContainer">
     <div id="wheel"></div>
     <div id="indicator"></div>
   </div>
-  <button id="spin">Zakręć!</button>
-  <img id="car" src="https://race-control-paints-prod.s3.amazonaws.com/68d3350919d5ce3b63251655/397_25_BMWMH/68d5a651d473357ee6c4b8ff/20250925213012/custom_paint_frontAngle.webp" alt="Auto">
 
-  <script src="./script.js"></script>
+  <button id="spin">Zakręć!</button>
+
+  <h2>Twoje wygrane:</h2>
+  <ul id="history"></ul>
+</div>
+
+<img id="car" src="https://race-control-paints-prod.s3.amazonaws.com/68d3350919d5ce3b63251655/397_25_BMWMH/68d5a651d473357ee6c4b8ff/20250925213012/custom_paint_frontAngle.webp">
+
+<script src="./script.js"></script>
+
 </body>
 </html>
